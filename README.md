@@ -4,15 +4,13 @@
 
 The following assignment was to create a team profile generator in order to keep track of employees by utilizing a command-line application. The inquirer package was used to create command-line prompts. The jest package was to run the application tests.
 
-![Screenshot of professional portfolio page](assets/images/dayplanner.png)
-
 ## Credit:
 
 Hannah Folk, my tutor, helped with reviewing my code. I also utilized google to help me.
 
 ## Walkthrough video:
 
-https://eweagraff.github.io/daily_planner/
+https://www.youtube.com/watch?v=Sc_gYmZMwpc
 
 ## License:
 
