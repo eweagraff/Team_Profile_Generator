@@ -61,13 +61,81 @@ function addManager() {
     },
   ];
   inquirer.prompt(manager).then((answers) => {
-    const newManger = new Manager(
+    const manager = new Manager(
       answers.name,
       answers.id,
       answers.email,
       answers.officeNumber
     );
-    employees.push(newManager);
+    employees.push(manager);
+    addEmployee();
+  });
+}
+function addIntern() {
+  let intern = [
+    {
+      type: "input",
+      name: "name",
+      message: "What is the new interns name",
+    },
+    {
+      type: "input",
+      name: "id",
+      message: "What is the new interns id?",
+    },
+    {
+      type: "input",
+      name: "email",
+      message: "What is the new interns email?",
+    },
+    {
+      type: "input",
+      name: "school",
+      message: "What is the managers office number?",
+    },
+  ];
+  inquirer.prompt(intern).then((answers) => {
+    const intern = new Intern(
+      answers.name,
+      answers.id,
+      answers.email,
+      answers.school
+    );
+    employees.push(intern);
+    addEmployee();
+  });
+}
+function addEngineer() {
+  let engineer = [
+    {
+      type: "input",
+      name: "name",
+      message: "What is the new engineers name?",
+    },
+    {
+      type: "input",
+      name: "id",
+      message: "What is the new engineers id?",
+    },
+    {
+      type: "input",
+      name: "email",
+      message: "What is the new engineers email?",
+    },
+    {
+      type: "input",
+      name: "github",
+      message: "What is the new engineers github?",
+    },
+  ];
+  inquirer.prompt(engineer).then((answers) => {
+    const engineer = new Engineer(
+      answers.name,
+      answers.id,
+      answers.email,
+      answers.githib
+    );
+    employees.push(engineer);
     addEmployee();
   });
 }
