@@ -6,11 +6,7 @@ The following assignment was to create a team profile generator in order to keep
 
 ## Credit:
 
-Hannah Folk, my tutor, helped with reviewing my code. I also utilized google to help me.
-
 ## Walkthrough video:
-
-https://www.youtube.com/watch?v=Sc_gYmZMwpc
 
 ## License:
 

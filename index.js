@@ -3,9 +3,17 @@ const Employee = require("./lib/employee");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 const Manager = require("./lib/manager");
-const generateHTML = require("./lib/htmlRenderer");
+const path = require("path");
+const fs = require("fs");
+//const generateHTML = require("./lib/htmlRenderer");
 
-const employees = [];
+const OUTPUT_DIR = path.resolve(__dirname, "output");
+const outputPath = path.join(OUTPUT_DIR, "finalteam.html");
+
+const render = require("./lib/htmlRenderer");
+const templateDir = path.resolve(__dirname, "./template");
+
+const team = [];
 
 function addEmployee() {
   inquirer
@@ -30,9 +38,9 @@ function addEmployee() {
       }
       if (answer.role === "Engineer") {
         addEngineer();
-      }
-      if (answer.role === "Do not add new employee at this time") {
-        exit();
+      } else answer.role === "Do not add new employee at this time";
+      {
+        generateHTML(); //(outputPath, render(employees));
       }
     });
 }
@@ -67,7 +75,7 @@ function addManager() {
       answers.email,
       answers.officeNumber
     );
-    employees.push(manager);
+    team.push(manager);
     addEmployee();
   });
 }
@@ -91,7 +99,7 @@ function addIntern() {
     {
       type: "input",
       name: "school",
-      message: "What is the managers office number?",
+      message: "What is interns school?",
     },
   ];
   inquirer.prompt(intern).then((answers) => {
@@ -133,11 +141,16 @@ function addEngineer() {
       answers.name,
       answers.id,
       answers.email,
-      answers.githib
+      answers.github
     );
     employees.push(engineer);
     addEmployee();
   });
 }
+
+// Function that will render and generate the HTML file
+const generateHTML = () => {
+  fs.writeFileSync(outputPath, render(team), "utf-8");
+};
 
 addEmployee();
