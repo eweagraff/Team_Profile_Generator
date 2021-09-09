@@ -13,7 +13,7 @@ const outputPath = path.join(OUTPUT_DIR, "finalteam.html");
 const render = require("./lib/htmlRenderer");
 const templateDir = path.resolve(__dirname, "./template");
 
-const team = [];
+const employees = [];
 
 function addEmployee() {
   inquirer
@@ -32,16 +32,12 @@ function addEmployee() {
     .then((answer) => {
       if (answer.role === "Manager") {
         addManager();
-      }
-      if (answer.role === "Intern") {
+      } else if (answer.role === "Intern") {
         addIntern();
-      }
-      if (answer.role === "Engineer") {
+      } else if (answer.role === "Engineer") {
         addEngineer();
-      } else answer.role === "Do not add new employee at this time";
-      {
-        generateHTML(); //(outputPath, render(employees));
-      }
+      } else if (answer.role === "Do not add new employee at this time");
+      generateHTML(); //(outputPath, render(employees));
     });
 }
 
@@ -75,7 +71,7 @@ function addManager() {
       answers.email,
       answers.officeNumber
     );
-    team.push(manager);
+    employees.push(manager);
     addEmployee();
   });
 }
@@ -150,7 +146,8 @@ function addEngineer() {
 
 // Function that will render and generate the HTML file
 const generateHTML = () => {
-  fs.writeFileSync(outputPath, render(team), "utf-8");
+  fs.writeFileSync(outputPath, render(employees), "utf-8");
+  console.log("Team profile sucessfully generated!");
 };
 
 addEmployee();
