@@ -4,9 +4,15 @@
 
 The following assignment was to create a team profile generator in order to keep track of employees by utilizing a command-line application. The inquirer package was used to create command-line prompts. The jest package was to run the application tests.
 
-## Credit:
+## Installation
+
+run npm install
+run npm test
+run node index.js
 
 ## Walkthrough video:
+
+[Youtube](https://www.youtube.com/watch?v=8joPQmQ0jwk)
 
 ## License:
 
